@@ -8,7 +8,7 @@ import { useRouter, useRoute } from "vue-router";
 import BankService from "@/services/Bank";
 import { SubmitEventPromise } from "vuetify";
 import { useI18n } from "vue-i18n";
-import DatePicker from "@/components/form/DatePicker.vue";
+// import DatePicker from "@/components/form/DatePicker.vue";
 
 const { t } = useI18n();
 const loading = ref<boolean>(false);
@@ -65,16 +65,16 @@ getData();
     <v-form @submit.prevent="save">
       <v-row>
         <v-col cols="12" lg="3" md="4">
-          <Input label="bankName" v-model="Bank.person.bankName" required />
+          <Input label="bankName" v-model="Bank.bankName" required />
         </v-col>
         <v-col cols="12" lg="3" md="4">
-          <Input label="bankCode" v-model="Bank.person.bankCode" required />
+          <Input label="bankCode" v-model="Bank.bankCode" required />
         </v-col>
           <!-- <v-col cols="12" lg="3">
         <date-picker v-model="selectedDate"></date-picker>
       </v-col>   -->
         <v-col cols="12" lg="3" md="4">
-          <StateSelect v-model="Bank.person.stateId" />
+          <StateSelect v-model="Bank.stateId" />
         </v-col>
       </v-row>
       <v-row class="text-right justify-space-between">
