@@ -1,0 +1,172 @@
+html {
+
+    .bg-success,
+    .bg-primary,
+    .bg-secondary,
+    .bg-warning,
+    .bg-error,
+    .bg-info,
+    .bg-indigo {
+        color: white !important;
+    }
+
+    .text-h1,
+    .text-h2,
+    .text-h3,
+    .text-h4,
+    .text-h5,
+    .text-h6 {
+        color: rgb(var(--v-theme-grey-800));
+    }
+}
+
+
+
+
+/*This is for the Vertical sidebar*/
+.scrollnavbar {
+    height: calc(100vh - 60px);
+
+    /*General Menu css*/
+    .v-list-group__items .v-list-item,
+    .v-list-item {
+        border-radius: $border-radius-root + 3px;
+        padding-inline-start: calc(0.938rem + var(--indent-padding) / 10) !important;
+        margin: 0 0 2px;
+
+        .v-list-item__prepend {
+            margin-inline-end: 0.813rem;
+            // position: relative;
+            z-index: 2;
+        }
+
+        .v-list-item__append {
+            position: relative;
+            z-index: 2;
+
+            .v-icon {
+                margin-inline-start: 0.813rem;
+            }
+        }
+    }
+
+    /*This is for the dropdown*/
+    .v-list {
+        color: rgb(var(--v-theme-textSecondary));
+
+        >.v-list-item.v-list-item--active,
+        .v-list-item--active>.v-list-item__overlay {
+            background: transparent;
+            color: white;
+        }
+
+        .v-list-item--variant-text {
+            .v-list-item__overlay {
+                background: transparent;
+            }
+        }
+
+        >.v-list-group {
+            position: relative;
+
+            >.v-list-item--active,
+            >.v-list-item--active:hover {
+                background: transparent;
+                color: white;
+            }
+
+            .v-list-group__items .v-list-item.v-list-item--active,
+            .v-list-group__items .v-list-item.v-list-item--active>.v-list-item__overlay {
+                background: transparent;
+                color: rgb(var(--v-theme-secondary));
+            }
+        }
+
+        .v-list-item__content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .icon-box {
+            height: 2.5rem;
+            width: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: $border-radius-root + 3px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .v-list-item--density-default.v-list-item--one-line {
+            padding-top: 0.313rem;
+            padding-bottom: 0.313rem;
+            min-height: 2.5rem !important;
+        }
+
+        .v-list-item--density-default:not(.v-list-item--nav).v-list-item--one-line {
+            padding-inline-start: 0 !important;
+            padding-inline-end: 0.938rem;
+        }
+
+        .bg-hover-primary::before {
+            background-color: rgba(var(--v-theme-primary), 12%);
+        }
+
+        .v-list-item {
+            .navbox {
+                &:before {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    content: "";
+                    width: 0;
+                    height: 100%;
+                    transition: all 0.4s ease-in-out;
+                    z-index: 1;
+                    border-radius: 0.625rem;
+                    left: -1rem;
+                    width: 0;
+                }
+            }
+
+            &.v-list-item--active {
+                .navbox {
+                    &:before {
+                        width: calc(100% + 1rem);
+                        border-radius: 0 1.5rem 1.5rem 0;
+                    }
+                }
+            }
+
+            &:hover {
+                .navbox {
+                    &:before {
+                        width: calc(100% + 1rem);
+                        border-radius: 0 1.5rem 1.5rem 0;
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+// progress bar
+#nprogress .bar {
+    background: rgb(var(--v-theme-primary)) !important;
+    height: 3px !important;
+}
+
+#nprogress .peg {
+    box-shadow: 0 0 10px rgb(var(--v-theme-primary)), 0 0 5px rgb(var(--v-theme-primary));
+}
+
+#nprogress .spinner-icon {
+    border-top-color: rgb(var(--v-theme-primary));
+    border-left-color: rgb(var(--v-theme-primary));
+}
+
+
+div:where(.swal2-container) {
+    z-index: 8888 !important;
+}
