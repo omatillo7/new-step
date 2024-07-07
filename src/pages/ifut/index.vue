@@ -29,7 +29,8 @@ const headers = computed(() => {
 	return [
 		{ title: t("id"), key: "id", align: "start" },
 		{ title: t("code"), key: "code", align: "start" },
-		{ title: t("fullName"), key: "fullName", align: "center" },
+		{ title: t("fullName"), key: "fullName", align: "start" },
+		{ title: t("shortName"), key: "shortName", align: "start" },
 		{ title: t("stateId"), key: "stateId", align: "start" },
 		{ title: t("actions"), key: "actions", align: "start", sortable: false },
 	] as unknown as VDataTableHeaders[];

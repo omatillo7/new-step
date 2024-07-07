@@ -17,7 +17,7 @@ const route = useRoute();
 const router = useRouter();
 const getLoading = ref(false);
 
-const Ifut = ref<any>({
+const Data = ref<any>({
   state: "",
   personId: 1,
   person: {
@@ -36,7 +36,7 @@ const getData = () => {
   getLoading.value = true;
   IfutService.Get(route.params.id as string)
     .then((res) => {
-      Ifut.value = res.data;
+      Data.value = res.data;
     })
     .finally(() => {
       getLoading.value = false;
@@ -49,10 +49,10 @@ const save = async (values: SubmitEventPromise) => {
   if (!valid) return;
   loading.value = true;
 
-  IfutService.Update(Ifut.value)
+  IfutService.Update(Data.value)
     .then(() => {
       toast.success(t("saveSuccess"));
-      router.push({ name: "Ifut" });
+      router.push({ name: "Data" });
     })
     .finally(() => {
       loading.value = false;
@@ -65,17 +65,20 @@ getData();
   <UiParentCard :loading="getLoading">
     <v-form @submit.prevent="save">
       <v-row>
-        <v-col cols="12" lg="3" md="4">
-          <Input label="ifutName" v-model="Ifut.fullName" required />
+         <v-col cols="12" lg="3" md="4">
+          <Input label="code" v-model="Data.code" required />
         </v-col>
         <v-col cols="12" lg="3" md="4">
-          <Input label="code" v-model="Ifut.code" required />
+          <Input label="fullName" v-model="Data.fullName" required />
+        </v-col>
+        <v-col cols="12" lg="3" md="4">
+          <Input label="shortName" v-model="Data.shortName" required />
         </v-col>
         <!-- <v-col cols="12" lg="3" md="4">
          <v-date-input label="Date input" variant="outlined"></v-date-input>
         </v-col> -->
         <v-col cols="12" lg="3" md="6">
-          <StateSelect v-model="Ifut.stateId" />
+          <StateSelect v-model="Data.stateId" />
         </v-col>
       </v-row>
       <v-row class="text-right justify-space-between">

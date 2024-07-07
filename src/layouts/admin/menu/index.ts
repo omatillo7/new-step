@@ -29,26 +29,18 @@ const sidebarItem: IMenu[] = [
     visible: true,
   },
   {
-    title: "Malumotlar",
-    icon: "mdi-video-outline",
-    BgColor: "primary",
+    title: `Bank`,
     to: `/Bank`,
-    visible: true,
-    children: [
-      {
-        title: `Bank`,
-        to: `/Bank`,
-        icon: "mdi-video-outline", 
-        visible:true
-      },
-      {
-        title: `Ifut`,
-        to: `/ifut`,
-        icon: "mdi-video-outline", 
-        visible:true
-      },
-      
-    ]
+    BgColor: "primary",
+    icon: "mdi-video-outline", 
+    visible:true
+  },
+  {
+    title: `Ifut`,
+    to: `/ifut`,
+    BgColor: "primary",
+    icon: "mdi-video-outline", 
+    visible:true
   },
 ];
 
