@@ -30,11 +30,9 @@ export const useAuthStore = defineStore('AuthStore', () => {
     }
 
     const logout = async () => {
-        localStorage.remove('access_token')
-
-        await router.push('Login')
+        localStorage.removeItem('access_token')
+        await router.push('auth/login')
     }
-
     const fetchUser = async () => {
         try {
             const res = await AccountService.GetUserInfo()

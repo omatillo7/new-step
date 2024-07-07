@@ -19,30 +19,47 @@ const store = useAuthStore();
 const { isLoading } = storeToRefs(store);
 
 const passwordRules = [
+  (v: string) => !!v || t("rules.required"),
   (v: string) => v?.length >= 6 || t("rules.min", { v: 6 }),
 ];
 
 const onSubmit = async (values: SubmitEventPromise) => {
   const { valid } = await values;
   if (valid) {
-    store.login(form.value).then(() => {
+    try {
+      await store.login(form.value);
       toast.success(t("auth.login_successfully"));
-    });
+    } catch (error) {
+      console.error("Login failed:", error);
+      toast.error(t("auth.login_failed"));
+    }
   }
+};
+
+const SignbyOneId = () => {
+  const clientId = 'vakansiya.edu.uz'; 
+  const redirectUri = `${import.meta.env.VITE_CLIENT_URL}/account/login/`;
+  const scope = 'vakansiya.edu.uz';
+  const state = 'testState';
+
+  const authorizationUrl = `https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scope}&state=${state}`;
+
+  window.location.replace(authorizationUrl);
 };
 </script>
 
 <template>
   <div class="auth-wrapper d-flex align-center justify-center pa-4">
-    <img
-      class="position-absolute left-0 top-0"
-      alt=""
-    />
+    <img class="position-absolute left-0 top-0" alt="" />
 
     <VCard class="auth-card pa-4 pt-7" max-width="448">
       <VCardItem class="justify-center">
         <VCardTitle class="font-weight-semibold text-2xl text-uppercase">
-          <a href="/" class="h-25"><img style="width:160px; height:auto" src="@/assets/images/profile/Group39.png" /></a>
+          <a href="/" class="h-25"
+            ><img
+              style="width: 160px; height: auto"
+              src="@/assets/images/profile/Group39.png"
+          /></a>
         </VCardTitle>
       </VCardItem>
 
@@ -50,7 +67,9 @@ const onSubmit = async (values: SubmitEventPromise) => {
         <h3 class="text-h3 font-weight-semibold mb-1">
           {{ $t("Kirish") }}
         </h3>
-        <p class="mb-0">{{ $t("Kirish uchun foydalanuvchi nomi va parolni kiriting") }}</p>
+        <p class="mb-0">
+          {{ $t("Kirish uchun foydalanuvchi nomi va parolni kiriting") }}
+        </p>
       </VCardText>
 
       <VCardText>
@@ -81,16 +100,28 @@ const onSubmit = async (values: SubmitEventPromise) => {
                 @click:append-inner="isPasswordVisible = !isPasswordVisible"
               />
             </VCol>
-            <VCol cols="12">
+            <VCol cols="12" lg="6">
               <VBtn
                 block
                 size="large"
-                color="primary"
+                color="success"
                 type="submit"
                 class="text-none"
                 :disabled="isLoading"
               >
                 {{ $t("Kirish") }}
+              </VBtn>
+            </VCol>
+            <VCol cols="12" lg="6">
+              <VBtn
+                block
+                size="large"
+                outlined
+                @click="SignbyOneId"
+                class="text-none"
+                :disabled="isLoading"
+              >
+                {{ $t("OneID") }}
               </VBtn>
             </VCol>
           </VRow>
