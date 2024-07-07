@@ -1,3 +1,5 @@
+import { title } from "process";
+
 export interface IMenu {
   header?: string;
   title?: string;
@@ -30,8 +32,23 @@ const sidebarItem: IMenu[] = [
     title: "Malumotlar",
     icon: "mdi-video-outline",
     BgColor: "primary",
-    to: "/Bank",
+    to: `/Bank`,
     visible: true,
+    children: [
+      {
+        title: `Bank`,
+        to: `/Bank`,
+        icon: "mdi-video-outline", 
+        visible:true
+      },
+      {
+        title: `Ifut`,
+        to: `/ifut`,
+        icon: "mdi-video-outline", 
+        visible:true
+      },
+      
+    ]
   },
 ];
 
