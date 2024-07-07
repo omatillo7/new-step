@@ -8,7 +8,8 @@ import { useRouter, useRoute } from "vue-router";
 import BankService from "@/services/Bank";
 import { SubmitEventPromise } from "vuetify";
 import { useI18n } from "vue-i18n";
-// import DatePicker from "@/components/form/DatePicker.vue";
+import DatePicker from "@/components/form/DatePicker.vue";
+import { VDateInput } from 'vuetify/labs/VDateInput'
 
 const { t } = useI18n();
 const loading = ref<boolean>(false);
@@ -24,7 +25,7 @@ const Bank = ref<any>({
     bankName: "",
     bankCode: 0,
     stateId: 1,
-  }
+  },
 });
 
 const Back = () => {
@@ -70,16 +71,18 @@ getData();
         <v-col cols="12" lg="3" md="4">
           <Input label="bankCode" v-model="Bank.bankCode" required />
         </v-col>
-          <!-- <v-col cols="12" lg="3">
-        <date-picker v-model="selectedDate"></date-picker>
-      </v-col>   -->
-        <v-col cols="12" lg="3" md="4">
+        <!-- <v-col cols="12" lg="3" md="4">
+         <v-date-input label="Date input" variant="outlined"></v-date-input>
+        </v-col> -->
+        <v-col cols="12" lg="3" md="6">
           <StateSelect v-model="Bank.stateId" />
         </v-col>
       </v-row>
       <v-row class="text-right justify-space-between">
         <v-col cols="3" lg="2" class="text-right mt-5">
-          <v-btn color="error" size="large" block @click="Back">{{ $t("back") }}</v-btn>
+          <v-btn color="error" size="large" block @click="Back">{{
+            $t("back")
+          }}</v-btn>
         </v-col>
         <v-col cols="3" lg="2" class="text-right mt-5">
           <v-btn
@@ -88,7 +91,8 @@ getData();
             :loading="loading"
             block
             type="submit"
-          >{{ $t("save") }}</v-btn>
+            >{{ $t("save") }}</v-btn
+          >
         </v-col>
       </v-row>
     </v-form>

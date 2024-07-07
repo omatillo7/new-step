@@ -9,7 +9,6 @@ import { setupI18n } from '@/i18n/i18n.config'
 import { setupGlobalComponents } from '@/components/setup'
 import { setupSwal } from './plugins/sweet-alerts';
 
-
 const app = createApp(App)
 
 setupGlobalComponents(app)
