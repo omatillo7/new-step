@@ -24,7 +24,7 @@ export default [
     },
     {
         path: 'Ifut/:id',
-        name: 'CreativeDirectionEdit',
+        name: 'IfutEdit',
         meta: {
             title: 'Ifut',
             activeMenu: 'Ifut',

@@ -42,6 +42,13 @@ const sidebarItem: IMenu[] = [
     icon: "mdi mdi-file-document-multiple-outline", 
     visible:true
   },
+  {
+    title: `basecalculationamount`,
+    to: `/basecalculationamount`,
+    BgColor: "primary",
+    icon: "mdi mdi-file-document-multiple-outline", 
+    visible:true
+  },
 ];
 
 export default sidebarItem;
