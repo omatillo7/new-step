@@ -56,8 +56,8 @@ const getList = () => {
 				<v-col cols="12" lg="4" md="6">
 					<Input density="compact" :debounce="500" v-model="pagination.search" @update:model-value="getList" label="search" hide-details clearable />
 				</v-col>
-				<v-col cols="12" lg="8" md="6" class="text-right" v-if="can('CreativeDirectionEdit')">
-					<v-btn color="primary" :to="{ name: 'CreativeDirectionEdit', params: { id: 0 } }" class="ml-auto">
+				<v-col cols="12" lg="8" md="6" class="text-right" v-if="can('IfutEdit')">
+					<v-btn color="primary" :to="{ name: 'IfutEdit', params: { id: 0 } }" class="ml-auto">
 						<v-icon class="mr-2">mdi-plus</v-icon>
 						{{ $t("Add") }}
 					</v-btn>
@@ -68,7 +68,7 @@ const getList = () => {
 		<WTable v-model:pagination="pagination" :loading="loading" :headers="headers" :items="List" :items-length="totalItems" @update:options="getList">
 			<template v-slot:item.actions="{ item } :any">
 				<div class="d-flex align-center">
-					<EditBtn :to="{ name: 'CreativeDirectionEdit', params: { id: item.id } }" />
+					<EditBtn :to="{ name: 'IfutEdit', params: { id: item.id } }" />
 					<DeleteBtn :id="item.id" :action="IfutService.Delete" @refresh="getList" />
 				</div>
 			</template>

@@ -67,7 +67,7 @@ const getList = () => {
 		<WTable v-model:pagination="pagination" :loading="loading" :headers="headers" :items="List" :items-length="totalItems" @update:options="getList">
 			<template v-slot:item.actions="{ item } :any">
 				<div class="d-flex align-center">
-					<EditBtn :to="{ name: 'CreativeDirectionEdit', params: { id: item.id } }" />
+					<EditBtn :to="{ name: 'basecalculationamountEdit', params: { id: item.id } }" />
 					<DeleteBtn :id="item.id" :action="BasecalculationamountService.Delete" @refresh="getList" />
 				</div>
 			</template>
