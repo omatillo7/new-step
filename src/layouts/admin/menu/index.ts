@@ -32,14 +32,14 @@ const sidebarItem: IMenu[] = [
     title: `Bank`,
     to: `/Bank`,
     BgColor: "primary",
-    icon: "mdi-video-outline", 
+    icon: "mdi mdi-file-document-multiple-outline", 
     visible:true
   },
   {
     title: `Ifut`,
     to: `/ifut`,
     BgColor: "primary",
-    icon: "mdi-video-outline", 
+    icon: "mdi mdi-file-document-multiple-outline", 
     visible:true
   },
 ];
